@@ -1,0 +1,5 @@
+jackson:
+  property-naming-strategy: SNAKE_CASE
+micronaut:
+  application:
+    name: mndemo
