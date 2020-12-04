@@ -28,7 +28,7 @@ class HelloControllerTest {
                     {"first_name": "Jill", "last_name": "Doe"}
                 """.trimIndent()
             )
-        ), """{"some_thing": "Jill","other_thing":"Doe"}""")
+        ), """{"some_thing":"Jill","other_thing":"Doe"}""")
     }
 
 }
