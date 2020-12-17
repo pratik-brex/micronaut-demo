@@ -1,0 +1,98 @@
+openapi: 3.0.1
+info:
+  title: openapi-demo
+  version: "0.0"
+paths:
+  /v1/hello:
+    post:
+      summary: Summary of this endpoint
+      description: Description of this endpoint
+      operationId: sayHello
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelloRequest'
+        required: true
+      responses:
+        "200":
+          description: sayHello 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloResponse'
+components:
+  schemas:
+    HelloResponse:
+      required:
+      - greeting
+      type: object
+      properties:
+        greeting:
+          type: string
+    HelloRequest:
+      required:
+      - applicant
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        applicant:
+          $ref: '#/components/schemas/Applicant'
+    Applicant:
+      required:
+      - address
+      - other_addresses
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: first name
+          nullable: true
+        last_name:
+          type: string
+          description: last name
+          nullable: true
+        address:
+          $ref: '#/components/schemas/Address'
+        secondary_address:
+          $ref: '#/components/schemas/Address'
+        other_addresses:
+          type: array
+          description: Other addresses
+          items:
+            $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+          description: "Address line 1, no PO Box."
+          nullable: true
+        line2:
+          type: string
+          description: "Address line 2 (e.g., apartment, suite, unit, or building)."
+          nullable: true
+        city:
+          type: string
+          description: "City, district, suburb, town, or village."
+          nullable: true
+        state:
+          type: string
+          description: "For US-addressed the 2-letter State abbreviation. For international-addresses\
+            \ the County, Providence, or Region."
+          nullable: true
+        country:
+          type: string
+          description: Two-letter country code (ISO 3166-1 alpha-2).
+          nullable: true
+        postal_code:
+          type: string
+          description: ZIP or postal code.
+          nullable: true
+        phone_number:
+          type: string
+          description: Phone number.
+          nullable: true
